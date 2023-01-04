@@ -2,7 +2,7 @@
 
 ## 简介
 
-![Busybox - Linux 瑞士军刀](_images/busybox-logo.png)
+![Busybox - Linux 瑞士军刀](./_images/busybox-logo.png)
 
 `BusyBox` 是一个集成了一百多个最常用 Linux 命令和工具（如 `cat`、`echo`、`grep`、`mount`、`telnet` 等）的精简工具箱，它只需要几 MB 的大小，很方便进行各种快速验证，被誉为“Linux 系统的瑞士军刀”。
 
@@ -10,30 +10,15 @@
 
 ## 获取官方镜像
 
-在 `Docker Hub` 中搜索 `busybox` 相关的镜像。
-
-```bash
-$ docker search busybox
-NAME                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-busybox                         Busybox base image.                             755       [OK]
-progrium/busybox                                                                63                   [OK]
-radial/busyboxplus              Full-chain, Internet enabled, busybox made...   11                   [OK]
-odise/busybox-python                                                            3                    [OK]
-multiarch/busybox               multiarch ports of ubuntu-debootstrap           2                    [OK]
-azukiapp/busybox                This image is meant to be used as the base...   2                    [OK]
-...
-```
-
-读者可以看到最受欢迎的镜像同时带有 `OFFICIAL` 标记，说明它是官方镜像。用户使用 `docker pull` 指令下载 `busybox:latest` 镜像：
+可以使用 `docker pull` 指令下载 `busybox:latest` 镜像：
 
 ```bash
 $ docker pull busybox:latest
-busybox:latest: The image you are pulling has been verified
-e433a6c5b276: Pull complete
-e72ac664f4f0: Pull complete
-511136ea3c5a: Pull complete
-df7546f9f060: Pull complete
+latest: Pulling from library/busybox
+5c4213be9af9: Pull complete
+Digest: sha256:c6b45a95f932202dbb27c31333c4789f45184a744060f6e569cc9d2bf1b9ad6f
 Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
 ```
 
 下载后，可以看到 `busybox` 镜像只有 **2.433 MB**：

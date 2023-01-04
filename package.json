@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "description": "docker_practice",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
-    "chalk": "^3.0.0",
-    "commander": "^4.0.1",
-    "esm": "^3.2.25",
-    "vuepress-plugin-container": "^2.1.2",
-    "vuepress-plugin-sitemap": "^2.3.1"
+    "chalk": "^4.1.1",
+    "commander": "^7.2.0",
+    "esm": "^3.0.0",
+    "vuepress": "1.8.2",
+    "vuepress-plugin-container": "^2.1.5",
+    "vuepress-theme-hope": "^1.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vuepress:build": "npx vuepress build"
+    "gitbook:help": "gitbook help",
+    "gitbook:build": "gitbook build",
+    "gitbook:serve": "gitbook serve",
+    "vuepress:build": "npx vuepress build",
+    "vuepress": "npx vuepress"
   },
   "repository": {
     "type": "git",

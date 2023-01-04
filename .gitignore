@@ -10,4 +10,4 @@ _book/
 node_modules/
 package-lock.json
 
-.vuepress/dist
+docker-compose.override.yml

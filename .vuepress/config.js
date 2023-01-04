@@ -1,4 +1,6 @@
-module.exports = {
+const { config } = require('vuepress-theme-hope')
+
+module.exports = config({
   title: 'Docker 从入门到实践',
   base: '/',
   head: [['script', {}, `
@@ -28,62 +30,120 @@ module.exports = {
   ]
   ],
   plugins: {
-    sitemap: {
-      hostname: 'https://vuepress.mirror.docker-practice.com'
-    },
+    // sitemap: {
+    //   hostname: 'https://vuepress.mirror.docker-practice.com'
+    // },
+    // 'git-log': {
+    //   additionalArgs: '--no-merge',
+    //   onlyFirstAndLastCommit: true,
+    // },
+  },
+  locales: {
+    "/": {
+      lang: "zh-CN"
+    }
   },
   themeConfig: {
+    blog: false,
+    // comment: false,
+    comment: {
+      type: "disable", // 使用 Valine
+      appId: "...", // your appId
+      appKey: "...", // your appKey
+    },
+    pageInfo: [
+      // 'author',
+      'reading-time',
+      'word',
+    ],
+    footer: {
+      content: "Made with <a target='_blank' href='https://github.com/vuepress-theme-hope/vuepress-theme-hope'>vuepress-theme-hope</a>",
+      display: true,
+      copyright: false,
+    },
+    searchPlaceholder: 'Search',
+    repo: 'yeasy/docker_practice',
+    repoLabel: 'GitHub',
+    repoDisplay: true,
+    hostname: 'https://vuepress.mirror.docker-practice.com',
+    // author: 'yeasy',
+    mdEnhance: {
+      lineNumbers: true,
+    },
+    git: {
+      contributor: false,
+    },
+    themeColor: {
+      blue: '#2196f3',
+      // red: '#f26d6d',
+      // green: '#3eaf7c',
+      // orange: '#fb9b5f'
+    },
+    locales: {
+      "/": {
+        lang: "zh-CN"
+      }
+    },
+
+    darkmode: 'auto-switch',
+
+    //
+
+    showAds: true,
+
     docsRepo: 'yeasy/docker_practice',
     docsDir: '/',
+    docsBranch: 'master',
     editLinks: true,
-    nav: [{
-      text: '安装 Docker',
-      link: '/install/',
-    },
-    {
-      text: 'Docker 入门',
-      link: '/'
-    },
-    {
-      text: 'Docker 实战',
-      link: '/cases/os/'
-    },
-    {
-      text: 'CI/CD',
-      link: '/cases/ci/'
-    },
-    {
-      text: 'Docker 仓库',
-      link: '/repository/'
-    },
-    {
-      text: '底层实现',
-      link: '/underly/',
-    },
-    {
-      text: 'Compose',
-      link: '/compose/',
-    },
-    {
-      text: 'Kubernetes',
-      link: '/kubernetes/',
-    },
-    {
-      text: "云计算",
-      link: "/cloud/",
-    },
-    {
-      text: 'GitHub',
-      link: 'https://github.com/yeasy/docker_practice'
-    },
-    // {
-    //   text: '捐赠',
-    //   link: ''
-    // },
-    {
-      text: '腾讯云容器服务',
-      link: 'https://cloud.tencent.com/redirect.php?redirect=10058&cps_key=3a5255852d5db99dcd5da4c72f05df61'
-    },
+    nav: [
+      {
+        text: '微信交流群',
+        link: 'https://docker_practice.gitee.io/pic/dpsig-wechat.jpg',
+      },
+      {
+        text: '小程序',
+        link: 'https://docker_practice.gitee.io/pic/dp-wechat-miniprogram.jpg',
+      },
+      {
+        text: '安装 Docker',
+        link: '/install/',
+      },
+      {
+        text: 'Docker 入门',
+        link: '/'
+      },
+      {
+        text: 'Docker 实战',
+        link: '/cases/os/'
+      },
+      {
+        text: 'CI/CD',
+        link: '/cases/ci/'
+      },
+      {
+        text: 'Compose',
+        link: '/compose/',
+      },
+      {
+        text: 'Kubernetes',
+        link: '/kubernetes/',
+      },
+      {
+        text: "云计算",
+        link: "/cloud/",
+      },
+      // {
+      //   text: 'GitHub',
+      //   link: 'https://github.com/yeasy/docker_practice'
+      // },
+      // {
+      //   text: '捐赠',
+      //   link: ''
+      // },
+      {
+        text: '云服务器99/元首年特惠',
+        link: 'https://cloud.tencent.com/act/cps/redirect?redirect=1062&cps_key=3a5255852d5db99dcd5da4c72f05df61&from=console'
+      },
       // {
       //   text: '语言',
       //   items: [{
@@ -106,7 +166,7 @@ module.exports = {
         'design',
         {
           title: "部署 Kubernetes",
-          collapsable: false,
+          collapsable: true,
           children: [
             "setup/",
             "setup/kubeadm",
@@ -117,7 +177,7 @@ module.exports = {
         },
         {
           title: "Kubernetes 命令行 kubectl",
-          collapsable: false,
+          collapsable: true,
           children: [
             'kubectl/'
           ]
@@ -125,6 +185,7 @@ module.exports = {
       ],
       '/compose/': [
         'introduction',
+        'v2',
         'install',
         'usage',
         'commands',
@@ -140,25 +201,11 @@ module.exports = {
         'fedora',
         'centos',
         'raspberry-pi',
-        'offline',
+        // 'offline',
         'mac',
         'windows',
         'mirror',
         'experimental',
-      ],
-      '/underly/': [
-        'arch',
-        'namespace',
-        'cgroups',
-        'ufs',
-        'container_format',
-        'network',
-      ],
-      '/repository/': [
-        'dockerhub',
-        'registry',
-        'registry_auth',
-        'nexus3_registry',
       ],
       '/cases/os/': [
         {
@@ -176,8 +223,8 @@ module.exports = {
           title: "在 IDE 中使用 Docker",
           collapsable: false,
           children: [
-            '/IDE/',
-            '/IDE/vsCode',
+            '/ide/',
+            '/ide/vsCode',
           ],
         },
       ],
@@ -185,13 +232,12 @@ module.exports = {
         'actions/',
         {
           title: "Drone",
-          collapsable: false,
+          collapsable: true,
           children: [
             'drone/',
             'drone/install'
           ]
         },
-        'travis/'
       ],
       '/': [
         '/',
@@ -231,7 +277,7 @@ module.exports = {
         },
         {
           title: 'Dockerfile',
-          collapsable: false,
+          collapsable: true,
           children: [
             "image/dockerfile/",
             'image/dockerfile/copy',
@@ -245,6 +291,8 @@ module.exports = {
             'image/dockerfile/workdir',
             'image/dockerfile/user',
             'image/dockerfile/healthcheck',
+            'image/dockerfile/label',
+            'image/dockerfile/shell',
             'image/dockerfile/onbuild',
             'image/dockerfile/references',
             'image/multistage-builds/',
@@ -262,6 +310,17 @@ module.exports = {
             'container/attach_exec',
             'container/import_export',
             'container/rm',
+          ],
+        },
+        {
+          title: "Docker 仓库",
+          collapsable: false,
+          children: [
+            'repository/',
+            'repository/dockerhub',
+            'repository/registry',
+            'repository/registry_auth',
+            'repository/nexus3_registry',
           ],
         },
         {
@@ -284,7 +343,7 @@ module.exports = {
         },
         {
           title: "高级网络配置",
-          collapsable: false,
+          collapsable: true,
           children: [
             'advanced_network/',
             'advanced_network/quick_guide',
@@ -298,7 +357,7 @@ module.exports = {
         },
         {
           title: "Swarm mode",
-          collapsable: false,
+          collapsable: true,
           children: [
             'swarm_mode/',
             'swarm_mode/overview',
@@ -312,7 +371,7 @@ module.exports = {
         },
         {
           title: "安全",
-          collapsable: false,
+          collapsable: true,
           children: [
             'security/',
             'security/kernel_ns',
@@ -321,6 +380,19 @@ module.exports = {
             'security/kernel_capability',
             'security/other_feature',
             'security/summary',
+          ],
+        },
+        {
+          title: "底层实现",
+          collapsable: true,
+          children: [
+            'underly/',
+            'underly/arch',
+            'underly/namespace',
+            'underly/cgroups',
+            'underly/ufs',
+            'underly/container_format',
+            'underly/network',
           ],
         },
         {
@@ -335,7 +407,7 @@ module.exports = {
         },
         {
           title: "Etcd",
-          collapsable: false,
+          collapsable: true,
           children: [
             'etcd/',
             'etcd/intro',
@@ -346,26 +418,18 @@ module.exports = {
         },
         {
           title: "Fedora CoreOS",
-          collapsable: false,
+          collapsable: true,
           children: [
             'coreos/',
             'coreos/intro',
             'coreos/install',
           ],
         },
-        {
-          title: "Docker 开源项目",
-          collapsable: false,
-          children: [
-            'opensource/',
-            'opensource/linuxkit',
-          ],
-        },
         'podman/',
         'appendix/faq/',
         {
           title: "热门镜像介绍",
-          collapsable: false,
+          collapsable: true,
           children: [
             'appendix/repo/',
             'appendix/repo/ubuntu',
@@ -382,7 +446,7 @@ module.exports = {
         },
         {
           title: "Docker 命令",
-          collapsable: false,
+          collapsable: true,
           children: [
             'appendix/command/',
             'appendix/command/docker',
@@ -395,4 +459,4 @@ module.exports = {
       ],
     },
   }
-}
+});

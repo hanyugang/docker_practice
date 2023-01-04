@@ -35,6 +35,8 @@ services:
 
   db:
     image: postgres
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
 
   web:
     build: .
@@ -43,8 +45,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    links:
-      - db
 ```
 
 查看 [`docker-compose.yml` 章节](compose_file.md) 了解更多详细的工作机制。
@@ -80,6 +80,7 @@ DATABASES = {
         'USER': 'postgres',
         'HOST': 'db',
         'PORT': 5432,
+        'PASSWORD': 'postgres',
     }
 }
 ```

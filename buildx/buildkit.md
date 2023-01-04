@@ -2,9 +2,9 @@
 
 **BuildKit** 是下一代的镜像构建组件，在 https://github.com/moby/buildkit 开源。
 
-**注意：如果您的镜像构建使用的是云服务商提供的镜像构建服务（Docker Hub 自动构建、腾讯云容器服务、阿里云容器服务等），由于上述服务提供商的 Docker 版本低于 18.09，BuildKit 无法使用，将造成镜像构建失败。建议使用 BuildKit 构建镜像时使用一个新的 Dockerfile 文件（例如 Dockerfile.buildkit）**
+**注意：如果您的镜像构建使用的是云服务商提供的镜像构建服务（腾讯云容器服务、阿里云容器服务等），由于上述服务提供商的 Docker 版本低于 18.09，BuildKit 无法使用，将造成镜像构建失败。建议使用 BuildKit 构建镜像时使用一个新的 Dockerfile 文件（例如 Dockerfile.buildkit）**
 
-**注意：docker-compose build 命令暂时不支持 BuildKit**
+目前，Docker Hub 自动构建已经支持 buildkit，具体请参考 https://github.com/docker-practice/docker-hub-buildx
 
 ## `Dockerfile` 新增指令详解
 
@@ -144,6 +144,10 @@ $ ssh-add ~/.ssh/id_rsa
 (Input your passphrase here)
 $ docker build -t test --ssh default=$SSH_AUTH_SOCK .
 ```
+
+## docker-compose build 使用 Buildkit
+
+设置 `COMPOSE_DOCKER_CLI_BUILD=1` 环境变量即可使用。
 
 ## 官方文档
 
